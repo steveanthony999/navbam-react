@@ -54,8 +54,34 @@ a {
   box-shadow: 0 15px 15px rgba(0, 0, 0, 0.25);
 }
 
+.circle-btn {
+  width: 40px;
+  height: 40px;
+  border: 2px solid white;
+  border-radius: 50%;
+  background: linear-gradient(217deg, rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0) 70.71%),
+    linear-gradient(127deg, rgba(0, 255, 0, 0.8), rgba(0, 255, 0, 0) 70.71%),
+    linear-gradient(336deg, rgba(0, 0, 255, 0.8), rgba(0, 0, 255, 0) 70.71%);
+  box-shadow: 0 5px 5px -10px rgba(0, 0, 0, 0.5);
+  transition: 0.4s;
+}
+
+.circle-btn:hover {
+  transform: scale(1.1);
+}
+
+.circle-btn:focus {
+  outline: none;
+}
+
 .text-center {
   text-align: center;
+}
+
+#home-container h1 span,
+#nav-logo span {
+  font-family: 'Monoton', cursive;
+  font-weight: lighter;
 }
 
 /* ======================= HOME ====================== */
@@ -90,31 +116,34 @@ a {
 }
 
 #home-container h1 span {
-  font-family: 'Monoton', cursive;
   font-size: 4rem;
-  font-weight: lighter;
 }
 
-/* ================= BACKGROUND COLOR ================ */
-/* ================= BACKGROUND COLOR ================ */
-/* ================= BACKGROUND COLOR ================ */
+/* ===================== BUILDER ===================== */
+/* ===================== BUILDER ===================== */
+/* ===================== BUILDER ===================== */
 
-.circle-btn {
-  width: 40px;
-  height: 40px;
-  border: 2px solid white;
-  border-radius: 50%;
-  background: linear-gradient(217deg, rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0) 70.71%),
-    linear-gradient(127deg, rgba(0, 255, 0, 0.8), rgba(0, 255, 0, 0) 70.71%),
-    linear-gradient(336deg, rgba(0, 0, 255, 0.8), rgba(0, 0, 255, 0) 70.71%);
-  box-shadow: 0 5px 5px -10px rgba(0, 0, 0, 0.5);
-  transition: 0.4s;
+#builder {
+  width: 100%;
+  height: 100%;
 }
 
-.circle-btn:hover {
-  transform: scale(1.1);
+#navbar {
+  width: 100%;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.circle-btn:focus {
-  outline: none;
+#nav-logo a {
+  font-size: 1.5rem;
+}
+
+#nav-logo span {
+  font-size: 1.5rem;
+}
+
+#nav-links a {
+  margin-left: 1rem;
 }
