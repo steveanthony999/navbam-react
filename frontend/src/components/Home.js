@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
-    <div id='home'>
+    <header id='home'>
       <div id='home-container'>
         <div className='text-center'>
           <p>Welcome to</p>
@@ -14,7 +14,7 @@ const Home = () => {
           Take me to the builder
         </Link>
       </div>
-    </div>
+    </header>
   );
 };
 
