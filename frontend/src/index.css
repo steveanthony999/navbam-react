@@ -30,6 +30,7 @@
   width: 100vw;
   height: 100vh;
   font-family: 'Nunito', sans-serif;
+  overflow: hidden;
 }
 
 a {
@@ -54,28 +55,12 @@ a {
   box-shadow: 0 15px 15px rgba(0, 0, 0, 0.25);
 }
 
-.circle-btn {
-  width: 40px;
-  height: 40px;
-  border: 2px solid white;
-  border-radius: 50%;
-  background: linear-gradient(217deg, rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0) 70.71%),
-    linear-gradient(127deg, rgba(0, 255, 0, 0.8), rgba(0, 255, 0, 0) 70.71%),
-    linear-gradient(336deg, rgba(0, 0, 255, 0.8), rgba(0, 0, 255, 0) 70.71%);
-  box-shadow: 0 5px 5px -10px rgba(0, 0, 0, 0.5);
-  transition: 0.4s;
-}
-
-.circle-btn:hover {
-  transform: scale(1.1);
-}
-
-.circle-btn:focus {
-  outline: none;
-}
-
 .text-center {
   text-align: center;
+}
+
+.pretty {
+  margin: 1rem 0 0 1rem;
 }
 
 #home-container h1 span,
@@ -125,8 +110,16 @@ a {
 
 #builder {
   width: 100%;
+  min-height: 700px;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+/* ====================== NAVBAR ===================== */
+/* ====================== NAVBAR ===================== */
+/* ====================== NAVBAR ===================== */
 
 #navbar {
   width: 100%;
@@ -146,4 +139,69 @@ a {
 
 #nav-links a {
   margin-left: 1rem;
+}
+
+/* ================= ATTRIBUTES WINDOW =============== */
+/* ================= ATTRIBUTES WINDOW =============== */
+/* ================= ATTRIBUTES WINDOW =============== */
+
+#attributes-window {
+  width: 400px;
+  height: 600px;
+  background: var(--color-white-pure);
+  border: 3px solid var(--color-grey-darkest);
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+#attributes-header {
+  height: 60px;
+  border-bottom: 2px solid var(--color-grey-darkest);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#attributes-body {
+  height: 480px;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+}
+
+#attributes-footer {
+  height: 60px;
+  border-top: 2px solid var(--color-grey-darkest);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#attributes-footer .circle-btn {
+  width: 60px;
+  height: 100%;
+  border-right: none;
+  border-bottom: none;
+  border-left: 2px solid var(--color-grey-darkest);
+  border-top: none;
+  border-radius: 0 0 20px 0;
+  background: linear-gradient(217deg, rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0) 70.71%),
+    linear-gradient(127deg, rgba(0, 255, 0, 0.8), rgba(0, 255, 0, 0) 70.71%),
+    linear-gradient(336deg, rgba(0, 0, 255, 0.8), rgba(0, 0, 255, 0) 70.71%);
+}
+
+#attributes-footer .circle-btn:hover {
+  cursor: pointer;
+}
+
+#attributes-footer .circle-btn:focus {
+  outline: none;
+}
+
+.chrome-picker {
+  border-radius: 0 0 25px 0 !important;
+  border-left: 2px solid var(--color-grey-darkest);
+  border-top: 2px solid var(--color-grey-darkest);
 }
