@@ -163,7 +163,7 @@ const Builder = () => {
         {/* TEXTAREA */}
         {/* TEXTAREA */}
         {/* TEXTAREA */}
-        <CodeText setNavBgText={colors.navBackground} />
+        <CodeText id={'css-code'} title={'CSS'} setNavBgText={colors.navBackground} />
       </div>
     </>
   );
