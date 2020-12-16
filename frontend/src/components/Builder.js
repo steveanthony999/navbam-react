@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Navbar from './Navbar';
+import CodeText from './CodeText';
 import { ChromePicker } from 'react-color';
 import { Radio } from 'pretty-checkbox-react';
 import '@djthoms/pretty-checkbox';
@@ -158,6 +159,11 @@ const Builder = () => {
             ) : null}
           </div>
         </div>
+
+        {/* TEXTAREA */}
+        {/* TEXTAREA */}
+        {/* TEXTAREA */}
+        <CodeText />
       </div>
     </>
   );

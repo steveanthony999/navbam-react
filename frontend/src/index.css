@@ -57,6 +57,14 @@ a {
   box-shadow: 0 15px 15px rgba(0, 0, 0, 0.25);
 }
 
+textarea {
+  resize: none;
+}
+
+textarea:focus {
+  outline: none;
+}
+
 .text-center {
   text-align: center;
 }
@@ -211,4 +219,16 @@ a {
   border-radius: 0 0 25px 0 !important;
   border-left: 2px solid var(--color-grey-darkest);
   border-top: 2px solid var(--color-grey-darkest);
+}
+
+/* ===================== CODE BOX ==================== */
+/* ===================== CODE BOX ==================== */
+/* ===================== CODE BOX ==================== */
+
+.code-box {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  top: 100px;
+  left: 0;
 }
