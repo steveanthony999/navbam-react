@@ -22,6 +22,7 @@ const Builder = () => {
 
   const [navbarPosition, setNavbarPosition] = useState('static');
   const [navbarWidth, setNavbarWidth] = useState('100%');
+  const [navbarHeight, setNavbarHeight] = useState('0');
 
   const style = {
     background: colors.background,
@@ -67,6 +68,12 @@ const Builder = () => {
       setNavbarWidth('100%');
     } else if (x === 'navbarWidthContained') {
       setNavbarWidth('1100px');
+    } else if (x === 'navbarHeightShort') {
+      setNavbarHeight('0');
+    } else if (x === 'navbarHeightMedium') {
+      setNavbarHeight('1rem');
+    } else if (x === 'navbarHeightTall') {
+      setNavbarHeight('2rem');
     }
   };
 
@@ -92,6 +99,7 @@ const Builder = () => {
         linkColor={colors.linkColor}
         navbarPosition={navbarPosition}
         navbarWidth={navbarWidth}
+        navbarHeight={navbarHeight}
       />
       <div style={style} id='builder'>
         {/* <div id='builder'> */}
@@ -204,6 +212,43 @@ const Builder = () => {
             >
               Navbar Width - Contained
             </Radio>
+            <Radio
+              name='navbarHeight'
+              value='navbarHeightShort'
+              shape='round'
+              variant='fill'
+              animation='jelly'
+              color='info'
+              bigger
+              onChange={() => handleRadio('navbarHeightShort')}
+              defaultChecked
+            >
+              Navbar Height - Short
+            </Radio>
+            <Radio
+              name='navbarHeight'
+              value='navbarHeightMedium'
+              shape='round'
+              variant='fill'
+              animation='jelly'
+              color='info'
+              bigger
+              onChange={() => handleRadio('navbarHeightMedium')}
+            >
+              Navbar Height - Medium
+            </Radio>
+            <Radio
+              name='navbarHeight'
+              value='navbarHeightTall'
+              shape='round'
+              variant='fill'
+              animation='jelly'
+              color='info'
+              bigger
+              onChange={() => handleRadio('navbarHeightTall')}
+            >
+              Navbar Height - Tall
+            </Radio>
           </div>
           {/* FOOTER */}
           {/* FOOTER */}
@@ -286,6 +331,7 @@ const Builder = () => {
   justify-content: space-between;
   max-width: ${navbarWidth}; 
   margin: 0 auto; 
+  padding: ${navbarHeight} 0;
 }`}
         />
         <CodeText

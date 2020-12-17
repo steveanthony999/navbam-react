@@ -297,18 +297,18 @@ textarea:focus {
 
 #html-code {
   position: absolute;
-  top: 100px;
+  top: 140px;
   left: -300px;
 }
 
 #css-code {
   position: absolute;
-  top: 440px;
+  top: 450px;
   left: -300px;
 }
 
 #javascript-code {
   position: absolute;
-  top: 780px;
+  top: 760px;
   left: -300px;
 }
