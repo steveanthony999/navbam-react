@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom';
 
-const Navbar = ({ navBg, linkColor, navbarPosition, navbarWidth, navbarHeight }) => {
+const Navbar = ({ navBg, linkColor, navbarPosition, navbarWidth, navbarHeight, navbarViewWidth }) => {
   const navStyle = {
+    width: navbarViewWidth,
     background: navBg,
     position: navbarPosition,
+    left: navbarPosition === 'fixed' ? '50%' : '0',
+    transform: navbarPosition === 'fixed' ? 'translateX(-50.05%)' : 'translateX(-0.025%)',
   };
 
   const innerNavStyle = {

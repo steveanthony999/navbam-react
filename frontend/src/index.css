@@ -142,13 +142,12 @@ textarea:focus {
 /* ====================== NAVBAR ===================== */
 
 #navbar {
-  width: 100%;
   padding: 0 2rem;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
   position: relative;
   z-index: 10;
+  margin: 0 auto;
 }
 
 #nav-container {
@@ -181,8 +180,12 @@ textarea:focus {
   border-radius: 30px;
   display: flex;
   flex-direction: column;
-  position: relative;
-  margin-top: -40%;
+  /* position: relative; */
+  /* margin-top: -35%; */
+  position: fixed;
+  left: 50%;
+  top: 240px;
+  transform: translateX(-50%);
 }
 
 #attributes-header {
@@ -296,19 +299,37 @@ textarea:focus {
 }
 
 #html-code {
-  position: absolute;
+  position: fixed;
   top: 140px;
   left: -300px;
 }
 
 #css-code {
-  position: absolute;
+  position: fixed;
   top: 450px;
   left: -300px;
 }
 
 #javascript-code {
-  position: absolute;
+  position: fixed;
   top: 760px;
   left: -300px;
+}
+
+/* ==================== VIEW WIDTH =================== */
+/* ==================== VIEW WIDTH =================== */
+/* ==================== VIEW WIDTH =================== */
+
+#view-width {
+  background: var(--color-white-pure);
+  border: 3px solid var(--color-grey-darkest);
+  border-radius: 35px;
+  padding: 1rem 2rem;
+  padding-top: 0.25rem;
+  /* position: absolute;
+  top: 130px; */
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 130px;
 }

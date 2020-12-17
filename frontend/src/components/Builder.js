@@ -23,6 +23,7 @@ const Builder = () => {
   const [navbarPosition, setNavbarPosition] = useState('static');
   const [navbarWidth, setNavbarWidth] = useState('100%');
   const [navbarHeight, setNavbarHeight] = useState('0');
+  const [navbarViewWidth, setNavbarViewWidth] = useState('100%');
 
   const style = {
     background: colors.background,
@@ -74,6 +75,12 @@ const Builder = () => {
       setNavbarHeight('1rem');
     } else if (x === 'navbarHeightTall') {
       setNavbarHeight('2rem');
+    } else if (x === 'viewWidthDesktop') {
+      setNavbarViewWidth('100%');
+    } else if (x === 'viewWidthTablet') {
+      setNavbarViewWidth('768px');
+    } else if (x === 'viewWidthMobile') {
+      setNavbarViewWidth('480px');
     }
   };
 
@@ -100,9 +107,49 @@ const Builder = () => {
         navbarPosition={navbarPosition}
         navbarWidth={navbarWidth}
         navbarHeight={navbarHeight}
+        navbarViewWidth={navbarViewWidth}
       />
       <div style={style} id='builder'>
         {/* <div id='builder'> */}
+        <div id='view-width'>
+          <Radio
+            name='viewWidth'
+            value='viewWidthDesktop'
+            shape='round'
+            variant='fill'
+            animation='jelly'
+            color='info'
+            bigger
+            onChange={() => handleRadio('viewWidthDesktop')}
+            defaultChecked
+          >
+            Desktop
+          </Radio>
+          <Radio
+            name='viewWidth'
+            value='viewWidthTablet'
+            shape='round'
+            variant='fill'
+            animation='jelly'
+            color='info'
+            bigger
+            onChange={() => handleRadio('viewWidthTablet')}
+          >
+            Tablet
+          </Radio>
+          <Radio
+            name='viewWidth'
+            value='viewWidthMobile'
+            shape='round'
+            variant='fill'
+            animation='jelly'
+            color='info'
+            bigger
+            onChange={() => handleRadio('viewWidthMobile')}
+          >
+            Mobile
+          </Radio>
+        </div>
         <div id='attributes-window'>
           {/* HEADER */}
           {/* HEADER */}
