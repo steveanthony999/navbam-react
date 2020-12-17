@@ -28,7 +28,7 @@
 
 #root {
   width: 100vw;
-  /* height: 100vh; */
+  /* height: 140vh; */
   font-family: 'Nunito', sans-serif;
   overflow: hidden;
   /* position: absolute;
@@ -128,13 +128,13 @@ textarea:focus {
 #builder {
   width: 100%;
   min-height: 700px;
-  height: 100vh;
+  height: 120vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* position: absolute; */
-  /* top: 0; */
-  /* z-index: -4; */
+  position: absolute;
+  top: 0;
+  z-index: -4;
 }
 
 /* ====================== NAVBAR ===================== */
@@ -145,10 +145,16 @@ textarea:focus {
   width: 100%;
   padding: 0 2rem;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
+  /* align-items: center; */
   position: relative;
   z-index: 10;
+}
+
+#nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #nav-logo a {
@@ -176,6 +182,7 @@ textarea:focus {
   display: flex;
   flex-direction: column;
   position: relative;
+  margin-top: -40%;
 }
 
 #attributes-header {

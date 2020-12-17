@@ -20,6 +20,9 @@ const Builder = () => {
 
   const [colorPicker, setColorPicker] = useState(false);
 
+  const [navbarPosition, setNavbarPosition] = useState('static');
+  const [navbarWidth, setNavbarWidth] = useState('100%');
+
   const style = {
     background: colors.background,
   };
@@ -28,7 +31,7 @@ const Builder = () => {
     setStoredColors({ ...storedColors, navBackground: colors.navBackground });
     if (radio === 'bgColor') {
       setColors({ ...colors, background: color.hex });
-      document.getElementById('root').style.backgroundColor = colors.background;
+      //   document.getElementById('root').style.backgroundColor = colors.background;
     } else if (radio === 'navBgColor') {
       setColors({ ...colors, navBackground: color.hex });
     } else if (radio === 'linkColor') {
@@ -56,6 +59,14 @@ const Builder = () => {
       setColors({ ...colors, navBackground: 'transparent' });
     } else if (x === 'navBgColor') {
       setColors({ ...colors, navBackground: storedColors.navBackground });
+    } else if (x === 'navbarPositionFixed') {
+      setNavbarPosition('fixed');
+    } else if (x === 'navbarPositionStatic') {
+      setNavbarPosition('static');
+    } else if (x === 'navbarWidthWide') {
+      setNavbarWidth('100%');
+    } else if (x === 'navbarWidthContained') {
+      setNavbarWidth('1100px');
     }
   };
 
@@ -76,9 +87,14 @@ const Builder = () => {
 
   return (
     <>
-      <Navbar navBg={colors.navBackground} linkColor={colors.linkColor} />
-      {/* <div style={style} id='builder'> */}
-      <div id='builder'>
+      <Navbar
+        navBg={colors.navBackground}
+        linkColor={colors.linkColor}
+        navbarPosition={navbarPosition}
+        navbarWidth={navbarWidth}
+      />
+      <div style={style} id='builder'>
+        {/* <div id='builder'> */}
         <div id='attributes-window'>
           {/* HEADER */}
           {/* HEADER */}
@@ -137,6 +153,56 @@ const Builder = () => {
               onChange={() => handleRadio('linkColor')}
             >
               Links Color
+            </Radio>
+            <Radio
+              name='navbarPosition'
+              value='navbarPositionStatic'
+              shape='round'
+              variant='fill'
+              animation='jelly'
+              color='info'
+              bigger
+              onChange={() => handleRadio('navbarPositionStatic')}
+              defaultChecked
+            >
+              Navbar Position - Static
+            </Radio>
+            <Radio
+              name='navbarPosition'
+              value='navbarPositionFixed'
+              shape='round'
+              variant='fill'
+              animation='jelly'
+              color='info'
+              bigger
+              onChange={() => handleRadio('navbarPositionFixed')}
+            >
+              Navbar Position - Fixed
+            </Radio>
+            <Radio
+              name='navbarWidth'
+              value='navbarWidthWide'
+              shape='round'
+              variant='fill'
+              animation='jelly'
+              color='info'
+              bigger
+              onChange={() => handleRadio('navbarWidthWide')}
+              defaultChecked
+            >
+              Navbar Width - Wide
+            </Radio>
+            <Radio
+              name='navbarWidth'
+              value='navbarWidthContained'
+              shape='round'
+              variant='fill'
+              animation='jelly'
+              color='info'
+              bigger
+              onChange={() => handleRadio('navbarWidthContained')}
+            >
+              Navbar Width - Contained
             </Radio>
           </div>
           {/* FOOTER */}
@@ -211,7 +277,15 @@ const Builder = () => {
           theCode={`nav { 
   background-color: ${colors.navBackground} 
   width: 100%;
-  position: ${'putFixedVariableHere'};
+  position: ${navbarPosition};
+}
+
+#nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: ${navbarWidth}; 
+  margin: 0 auto; 
 }`}
         />
         <CodeText
@@ -221,7 +295,7 @@ const Builder = () => {
           theCode={`Hi, I'm JavaScript code`}
         />
       </div>
-      <div id='section-2'></div>
+      {/* <div id='section-2'></div> */}
     </>
   );
 };
