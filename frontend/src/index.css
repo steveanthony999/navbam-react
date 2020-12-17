@@ -28,7 +28,7 @@
 
 #root {
   width: 100vw;
-  height: 100vh;
+  /* height: 100vh; */
   font-family: 'Nunito', sans-serif;
   overflow: hidden;
   /* position: absolute;
@@ -60,7 +60,6 @@ a {
 textarea {
   resize: none;
   border: none;
-  overflow: scroll;
 }
 
 textarea:focus {
@@ -79,6 +78,12 @@ textarea:focus {
 #nav-logo span {
   font-family: 'Monoton', cursive;
   font-weight: lighter;
+}
+
+#section-2 {
+  /* width: 100%; */
+  height: 100vh;
+  background: red;
 }
 
 /* ======================= HOME ====================== */
@@ -123,12 +128,12 @@ textarea:focus {
 #builder {
   width: 100%;
   min-height: 700px;
-  height: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  top: 0;
+  /* position: absolute; */
+  /* top: 0; */
   /* z-index: -4; */
 }
 
@@ -233,6 +238,7 @@ textarea:focus {
   border: 2px solid var(--color-grey-darkest);
   border-left: none;
   background-color: var(--color-white-pure);
+  border-radius: 0 0 25px 0;
   position: relative;
   transition: 0.2s;
 }
@@ -255,12 +261,12 @@ textarea:focus {
 }
 
 .code-box-container .code-box-header h3 {
-  margin-left: 2rem;
+  margin-left: 1rem;
 }
 
 .code-box-container .code-box-body {
   width: 100%;
-  height: 90%;
+  height: 240px;
   padding-left: 1rem;
 }
 
@@ -282,8 +288,20 @@ textarea:focus {
   height: 100%;
 }
 
-#css-code {
+#html-code {
   position: absolute;
   top: 100px;
+  left: -300px;
+}
+
+#css-code {
+  position: absolute;
+  top: 440px;
+  left: -300px;
+}
+
+#javascript-code {
+  position: absolute;
+  top: 780px;
   left: -300px;
 }

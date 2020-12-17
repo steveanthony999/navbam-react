@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy } from '@fortawesome/free-solid-svg-icons';
 
-const CodeText = ({ setNavBgText, id, title, textSelectId }) => {
+const CodeText = ({ theCode, id, title, textSelectId }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const style = {
@@ -10,23 +10,23 @@ const CodeText = ({ setNavBgText, id, title, textSelectId }) => {
   };
 
   const handleClick = (x) => {
-    if (x === 'css-code') {
-      if (isOpen === false) {
-        setIsOpen(true);
-      } else {
-        setIsOpen(false);
-      }
+    // if (x === 'css-code') {
+    if (isOpen === false) {
+      setIsOpen(true);
+    } else {
+      setIsOpen(false);
     }
+    // }
   };
 
   const selectAllText = (e) => {
-    if (e === 'css-select') {
-      const p = document.getElementById(e);
-      p.select();
-      document.execCommand('copy');
-    } else {
-      console.log('p');
-    }
+    // if (e === 'css-select') {
+    const p = document.getElementById(e);
+    p.select();
+    document.execCommand('copy');
+    // } else {
+    //   console.log('p');
+    // }
   };
 
   return (
@@ -35,14 +35,7 @@ const CodeText = ({ setNavBgText, id, title, textSelectId }) => {
         <h3>{title}</h3>
       </div>
       <div className='code-box-body'>
-        <textarea
-          id={textSelectId}
-          value={`nav { 
-    background-color: ${setNavBgText} 
-}`}
-          className='code-box'
-          readOnly
-        />
+        <textarea id={textSelectId} value={theCode} className='code-box' readOnly />
       </div>
       <div className='code-box-footer'>
         <FontAwesomeIcon icon={faCopy} size='2x' onClick={() => selectAllText(textSelectId)} />
