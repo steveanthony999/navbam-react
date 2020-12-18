@@ -241,6 +241,28 @@ textarea:focus {
   border-top: 2px solid var(--color-grey-darkest);
 }
 
+.title-box {
+  width: 100%;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-box h6 {
+  width: 60%;
+  padding: 0.25rem 0;
+  font-size: 0.75rem;
+  border: 1px solid var(--color-grey-dark);
+  text-align: center;
+}
+
+.title-box hr {
+  width: 20%;
+  height: 1px;
+  border: 1px solid var(--color-grey-light);
+}
+
 /* ===================== CODE BOX ==================== */
 /* ===================== CODE BOX ==================== */
 /* ===================== CODE BOX ==================== */

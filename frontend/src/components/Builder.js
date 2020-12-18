@@ -51,7 +51,7 @@ const Builder = () => {
     return () => {
       window.removeEventListener('scroll', onScroll);
     };
-  }, [scrollY]);
+  }, [scrollY, navbarPosition, navbarShrink, storedNavbarHeight]);
 
   const handleColorChange = (color) => {
     setStoredColors({ ...storedColors, navBackground: colors.navBackground });
@@ -193,6 +193,7 @@ const Builder = () => {
           {/* BODY */}
           {/* BODY */}
           <div id='attributes-body'>
+            {/* ================= PAGE BACKGROUND COLOR */}
             <Radio
               name='component'
               value='bgColor'
@@ -205,6 +206,12 @@ const Builder = () => {
             >
               Page Background Color
             </Radio>
+            {/* ================= NAVBAR BACKGROUND COLOR */}
+            <div className='title-box'>
+              <hr />
+              <h6>NAVBAR BACKGROUND COLOR</h6>
+              <hr />
+            </div>
             <Radio
               name='component'
               value='navBgColor'
@@ -241,6 +248,12 @@ const Builder = () => {
             >
               Links Color
             </Radio>
+            {/* ================= NAVBAR POSITION */}
+            <div className='title-box'>
+              <hr />
+              <h6>NAVBAR POSITION</h6>
+              <hr />
+            </div>
             <Radio
               name='navbarPosition'
               value='navbarPositionStatic'
@@ -266,6 +279,12 @@ const Builder = () => {
             >
               Navbar Position - Fixed
             </Radio>
+            {/* ================= INNER NAVBAR WIDTH */}
+            <div className='title-box'>
+              <hr />
+              <h6>INNER NAVBAR WIDTH</h6>
+              <hr />
+            </div>
             <Radio
               name='navbarWidth'
               value='navbarWidthWide'
@@ -291,6 +310,12 @@ const Builder = () => {
             >
               Navbar Width - Contained
             </Radio>
+            {/* ================= NAVBAR HEIGHT */}
+            <div className='title-box'>
+              <hr />
+              <h6>NAVBAR HEIGHT</h6>
+              <hr />
+            </div>
             <Radio
               name='navbarHeight'
               value='navbarHeightShort'
@@ -328,6 +353,12 @@ const Builder = () => {
             >
               Navbar Height - Tall
             </Radio>
+            {/* ================= NAVBAR SHRINK ON SCROLL */}
+            <div className='title-box'>
+              <hr />
+              <h6>NAVBAR SHRINK ON SCROLL</h6>
+              <hr />
+            </div>
             <Radio
               name='navbarShrink'
               value='navbarShrinkOff'
@@ -444,16 +475,15 @@ const Builder = () => {
           textSelectId={'javascript-select'}
           theCode={
             navbarShrink
-              ? `
-const nav = document.querySelector('nav');
+              ? `const nav = document.querySelector('nav');
 
 window.onscroll = () => scrollNav();
 
 function scrollNav() {
   if (window.pageYOffset > 50) {
-    nav.style.padding = '16px 32px';
+    nav.style.padding = '0 32px';
   } else {
-    nav.style.padding = '64px 32px';
+    nav.style.padding = '${storedNavbarHeight} 32px';
   }
 }
           `
