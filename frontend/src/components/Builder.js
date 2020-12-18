@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import CodeText from './CodeText';
 import { ChromePicker } from 'react-color';
@@ -25,9 +25,24 @@ const Builder = () => {
   const [navbarHeight, setNavbarHeight] = useState('0');
   const [navbarViewWidth, setNavbarViewWidth] = useState('100%');
 
+  const [scrollY, setScrollY] = useState(0);
+
   const style = {
     background: colors.background,
   };
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrollY(window.pageYOffset);
+      console.log(scrollY);
+    };
+
+    window.addEventListener('scroll', onScroll);
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, [scrollY]);
 
   const handleColorChange = (color) => {
     setStoredColors({ ...storedColors, navBackground: colors.navBackground });
@@ -388,7 +403,7 @@ const Builder = () => {
           theCode={`Hi, I'm JavaScript code`}
         />
       </div>
-      {/* <div id='section-2'></div> */}
+      <div id='section-2'></div>
     </>
   );
 };
