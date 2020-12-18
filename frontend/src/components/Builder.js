@@ -27,6 +27,7 @@ const Builder = () => {
   const [navbarViewWidth, setNavbarViewWidth] = useState('100%');
   const [navbarShrink, setNavbarShrink] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const [linkHoverState, setLinkHoverState] = useState('none');
 
   const style = {
     background: colors.background,
@@ -113,6 +114,10 @@ const Builder = () => {
       setNavbarHeight(storedNavbarHeight);
     } else if (x === 'navbarShrinkOn') {
       setNavbarShrink(true);
+    } else if (x === 'linksHoverNone') {
+      setLinkHoverState('none');
+    } else if (x === 'linksHoverScale') {
+      setLinkHoverState('scale');
     }
   };
 
@@ -140,6 +145,7 @@ const Builder = () => {
         navbarWidth={navbarWidth}
         navbarHeight={navbarHeight}
         navbarViewWidth={navbarViewWidth}
+        linkHoverState={linkHoverState}
       />
       <div style={style} id='builder'>
         {/* <div id='builder'> */}
@@ -235,18 +241,6 @@ const Builder = () => {
               onChange={() => handleRadio('transparentNavBg')}
             >
               Transparent Navbar
-            </Radio>
-            <Radio
-              name='component'
-              value='linkColor'
-              shape='round'
-              variant='fill'
-              animation='jelly'
-              color='info'
-              bigger
-              onChange={() => handleRadio('linkColor')}
-            >
-              Links Color
             </Radio>
             {/* ================= NAVBAR POSITION */}
             <div className='title-box'>
@@ -384,6 +378,55 @@ const Builder = () => {
             >
               Navbar Shrink - On
             </Radio>
+            {/* ================= LINKS COLOR */}
+            <div className='title-box'>
+              <hr />
+              <h6>LINKS COLOR</h6>
+              <hr />
+            </div>
+            <Radio
+              name='component'
+              value='linkColor'
+              shape='round'
+              variant='fill'
+              animation='jelly'
+              color='info'
+              bigger
+              onChange={() => handleRadio('linkColor')}
+            >
+              Links Color
+            </Radio>
+            {/* ================= LINKS HOVER EFFECTS */}
+            <div className='title-box'>
+              <hr />
+              <h6>LINKS HOVER EFFECTS</h6>
+              <hr />
+            </div>
+            <Radio
+              name='linksHover'
+              value='linksHoverNone'
+              shape='round'
+              variant='fill'
+              animation='jelly'
+              color='info'
+              bigger
+              onChange={() => handleRadio('linksHoverNone')}
+              defaultChecked
+            >
+              Links Hover - None
+            </Radio>
+            <Radio
+              name='linksHover'
+              value='linksHoverScale'
+              shape='round'
+              variant='fill'
+              animation='jelly'
+              color='info'
+              bigger
+              onChange={() => handleRadio('linksHoverScale')}
+            >
+              Links Hover - Scale
+            </Radio>
           </div>
           {/* FOOTER */}
           {/* FOOTER */}
@@ -466,7 +509,7 @@ const Builder = () => {
   justify-content: space-between;
   max-width: ${navbarWidth}; 
   margin: 0 auto; 
-  padding: ${navbarHeight} 0;
+  padding: ${storedNavbarHeight} 0;
 }`}
         />
         <CodeText
