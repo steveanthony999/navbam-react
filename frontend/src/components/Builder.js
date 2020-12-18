@@ -23,8 +23,9 @@ const Builder = () => {
   const [navbarPosition, setNavbarPosition] = useState('static');
   const [navbarWidth, setNavbarWidth] = useState('100%');
   const [navbarHeight, setNavbarHeight] = useState('0');
+  const [storedNavbarHeight, setStoredNavbarHeight] = useState('0');
   const [navbarViewWidth, setNavbarViewWidth] = useState('100%');
-
+  const [navbarShrink, setNavbarShrink] = useState(false);
   const [scrollY, setScrollY] = useState(0);
 
   const style = {
@@ -34,7 +35,15 @@ const Builder = () => {
   useEffect(() => {
     const onScroll = () => {
       setScrollY(window.pageYOffset);
-      console.log(scrollY);
+      if (navbarShrink === true && navbarPosition === 'fixed') {
+        if (scrollY > 50) {
+          setNavbarHeight('0');
+        } else if (scrollY < 50) {
+          setNavbarHeight(storedNavbarHeight);
+        }
+      } else {
+        setNavbarHeight(storedNavbarHeight);
+      }
     };
 
     window.addEventListener('scroll', onScroll);
@@ -86,16 +95,24 @@ const Builder = () => {
       setNavbarWidth('1100px');
     } else if (x === 'navbarHeightShort') {
       setNavbarHeight('0');
+      setStoredNavbarHeight('0');
     } else if (x === 'navbarHeightMedium') {
       setNavbarHeight('1rem');
+      setStoredNavbarHeight('1rem');
     } else if (x === 'navbarHeightTall') {
       setNavbarHeight('2rem');
+      setStoredNavbarHeight('2rem');
     } else if (x === 'viewWidthDesktop') {
       setNavbarViewWidth('100%');
     } else if (x === 'viewWidthTablet') {
       setNavbarViewWidth('768px');
     } else if (x === 'viewWidthMobile') {
       setNavbarViewWidth('480px');
+    } else if (x === 'navbarShrinkOff') {
+      setNavbarShrink(false);
+      setNavbarHeight(storedNavbarHeight);
+    } else if (x === 'navbarShrinkOn') {
+      setNavbarShrink(true);
     }
   };
 
@@ -311,6 +328,31 @@ const Builder = () => {
             >
               Navbar Height - Tall
             </Radio>
+            <Radio
+              name='navbarShrink'
+              value='navbarShrinkOff'
+              shape='round'
+              variant='fill'
+              animation='jelly'
+              color='info'
+              bigger
+              onChange={() => handleRadio('navbarShrinkOff')}
+              defaultChecked
+            >
+              Navbar Shrink - Off
+            </Radio>
+            <Radio
+              name='navbarShrink'
+              value='navbarShrinkOn'
+              shape='round'
+              variant='fill'
+              animation='jelly'
+              color='info'
+              bigger
+              onChange={() => handleRadio('navbarShrinkOn')}
+            >
+              Navbar Shrink - On
+            </Radio>
           </div>
           {/* FOOTER */}
           {/* FOOTER */}
@@ -400,7 +442,23 @@ const Builder = () => {
           id={'javascript-code'}
           title={'JAVASCRIPT'}
           textSelectId={'javascript-select'}
-          theCode={`Hi, I'm JavaScript code`}
+          theCode={
+            navbarShrink
+              ? `
+const nav = document.querySelector('nav');
+
+window.onscroll = () => scrollNav();
+
+function scrollNav() {
+  if (window.pageYOffset > 50) {
+    nav.style.padding = '16px 32px';
+  } else {
+    nav.style.padding = '64px 32px';
+  }
+}
+          `
+              : ''
+          }
         />
       </div>
       <div id='section-2'></div>

@@ -12,6 +12,7 @@ const Navbar = ({ navBg, linkColor, navbarPosition, navbarWidth, navbarHeight, n
   const innerNavStyle = {
     width: navbarWidth,
     padding: `${navbarHeight} 0`,
+    transition: '0.4s',
   };
 
   const linkStyle = {
