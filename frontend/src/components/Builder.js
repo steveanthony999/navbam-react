@@ -12,6 +12,7 @@ const Builder = () => {
     background: '#cccccc',
     navBackground: '#333333',
     linkColor: '#ffffff',
+    hoverLinkColor: '#3344ff',
   });
 
   const [storedColors, setStoredColors] = useState({
@@ -63,6 +64,10 @@ const Builder = () => {
       setColors({ ...colors, navBackground: color.hex });
     } else if (radio === 'linkColor') {
       setColors({ ...colors, linkColor: color.hex });
+    } else if (radio === 'linksHoverColor') {
+      setColors({ ...colors, hoverLinkColor: color.hex });
+    } else if (radio === 'linksHoverScaleAndColor') {
+      setColors({ ...colors, hoverLinkColor: color.hex });
     }
   };
 
@@ -118,6 +123,10 @@ const Builder = () => {
       setLinkHoverState('none');
     } else if (x === 'linksHoverScale') {
       setLinkHoverState('scale');
+    } else if (x === 'linksHoverColor') {
+      setLinkHoverState('color');
+    } else if (x === 'linksHoverScaleAndColor') {
+      setLinkHoverState('scaleandcolor');
     }
   };
 
@@ -146,6 +155,7 @@ const Builder = () => {
         navbarHeight={navbarHeight}
         navbarViewWidth={navbarViewWidth}
         linkHoverState={linkHoverState}
+        hoverLinkColor={colors.hoverLinkColor}
       />
       <div style={style} id='builder'>
         {/* <div id='builder'> */}
@@ -241,6 +251,24 @@ const Builder = () => {
               onChange={() => handleRadio('transparentNavBg')}
             >
               Transparent Navbar
+            </Radio>
+            {/* ================= LINKS COLOR */}
+            <div className='title-box'>
+              <hr />
+              <h6>LINKS COLOR</h6>
+              <hr />
+            </div>
+            <Radio
+              name='component'
+              value='linkColor'
+              shape='round'
+              variant='fill'
+              animation='jelly'
+              color='info'
+              bigger
+              onChange={() => handleRadio('linkColor')}
+            >
+              Links Color
             </Radio>
             {/* ================= NAVBAR POSITION */}
             <div className='title-box'>
@@ -378,24 +406,6 @@ const Builder = () => {
             >
               Navbar Shrink - On
             </Radio>
-            {/* ================= LINKS COLOR */}
-            <div className='title-box'>
-              <hr />
-              <h6>LINKS COLOR</h6>
-              <hr />
-            </div>
-            <Radio
-              name='component'
-              value='linkColor'
-              shape='round'
-              variant='fill'
-              animation='jelly'
-              color='info'
-              bigger
-              onChange={() => handleRadio('linkColor')}
-            >
-              Links Color
-            </Radio>
             {/* ================= LINKS HOVER EFFECTS */}
             <div className='title-box'>
               <hr />
@@ -427,6 +437,30 @@ const Builder = () => {
             >
               Links Hover - Scale
             </Radio>
+            <Radio
+              name='linksHover'
+              value='linksHoverColor'
+              shape='round'
+              variant='fill'
+              animation='jelly'
+              color='info'
+              bigger
+              onChange={() => handleRadio('linksHoverColor')}
+            >
+              Links Hover - Color
+            </Radio>
+            <Radio
+              name='linksHover'
+              value='linksHoverScaleAndColor'
+              shape='round'
+              variant='fill'
+              animation='jelly'
+              color='info'
+              bigger
+              onChange={() => handleRadio('linksHoverScaleAndColor')}
+            >
+              Links Hover - Scale and Color
+            </Radio>
           </div>
           {/* FOOTER */}
           {/* FOOTER */}
@@ -443,7 +477,11 @@ const Builder = () => {
                       ? colors.background
                       : radio === 'navBgColor'
                       ? colors.navBackground
-                      : colors.linkColor
+                      : radio === 'linkColor'
+                      ? colors.linkColor
+                      : radio === 'linksHoverColor'
+                      ? colors.hoverLinkColor
+                      : radio === 'linksHoverScaleAndColor' && colors.hoverLinkColor
                   }
                   onChange={handleColorChange}
                   disableAlpha={true}
@@ -510,6 +548,31 @@ const Builder = () => {
   max-width: ${navbarWidth}; 
   margin: 0 auto; 
   padding: ${storedNavbarHeight} 0;
+}
+
+#nav-links a {
+  text-decoration: none;
+  display: inline-block;
+  margin-left: 16px;
+  color: ${colors.linkColor};
+  transition: 0.2s;
+}
+
+${
+  linkHoverState === 'scale'
+    ? `#nav-links a:hover {
+  transform: scale(1.2);
+}`
+    : linkHoverState === 'color'
+    ? `#nav-links a:hover {
+  color: ${colors.hoverLinkColor};
+}`
+    : linkHoverState === 'scaleandcolor'
+    ? `#nav-links a:hover {
+  transform: scale(1.2);
+  color: ${colors.hoverLinkColor};
+}`
+    : ''
 }`}
         />
         <CodeText

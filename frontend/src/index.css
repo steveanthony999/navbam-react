@@ -173,16 +173,15 @@ textarea:focus {
 }
 
 #nav-links a {
-  /* width: 50px; */
-  /* text-align: center; */
   margin-left: 1rem;
 }
 
-.toggled-hover {
+.toggled-hover-scale,
+.toggled-hover-color {
   transition: 0.2s;
 }
 
-.toggled-hover:hover {
+.toggled-hover-scale:hover {
   transform: scale(1.2);
 }
 

@@ -1,7 +1,16 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = ({ navBg, linkColor, navbarPosition, navbarWidth, navbarHeight, navbarViewWidth, linkHoverState }) => {
+const Navbar = ({
+  navBg,
+  linkColor,
+  navbarPosition,
+  navbarWidth,
+  navbarHeight,
+  navbarViewWidth,
+  linkHoverState,
+  hoverLinkColor,
+}) => {
   //   const [isHover, setIsHover] = useState('none');
 
   const navStyle = {
@@ -14,17 +23,27 @@ const Navbar = ({ navBg, linkColor, navbarPosition, navbarWidth, navbarHeight, n
 
   const linkHover = (e) => {
     if (linkHoverState === 'none') {
-      e.target.classList.remove('toggled-hover');
+      e.target.classList.remove('toggled-hover-scale');
+      e.target.classList.remove('toggled-hover-color');
     } else if (linkHoverState === 'scale') {
-      e.target.classList.add('toggled-hover');
+      e.target.classList.add('toggled-hover-scale');
+      e.target.classList.remove('toggled-hover-color');
+    } else if (linkHoverState === 'color') {
+      e.target.classList.remove('toggled-hover-scale');
+      e.target.classList.add('toggled-hover-color');
+      e.target.style.color = hoverLinkColor;
+    } else if (linkHoverState === 'scaleandcolor') {
+      e.target.classList.add('toggled-hover-scale');
+      e.target.classList.add('toggled-hover-color');
+      e.target.style.color = hoverLinkColor;
     }
   };
 
   const linkHoverExit = (e) => {
-    if (linkHoverState === 'none') {
-      //   setIsHover('none');
-    } else if (linkHoverState === 'scale') {
-      //
+    if (linkHoverState === 'color') {
+      e.target.style.color = linkColor;
+    } else if (linkHoverState === 'scaleandcolor') {
+      e.target.style.color = linkColor;
     }
   };
 
