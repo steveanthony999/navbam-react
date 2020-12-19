@@ -20,7 +20,7 @@ const Builder = () => {
   });
 
   const [colorPicker, setColorPicker] = useState(false);
-
+  const [colorPickerText, setColorPickerText] = useState('Choose an Element to Begin');
   const [navbarPosition, setNavbarPosition] = useState('static');
   const [navbarWidth, setNavbarWidth] = useState('100%');
   const [navbarHeight, setNavbarHeight] = useState('0');
@@ -75,7 +75,7 @@ const Builder = () => {
     if (e) {
       setColorPicker(true);
     } else {
-      console.log('no');
+      setColorPickerText('Choose an Element');
     }
   };
 
@@ -86,11 +86,17 @@ const Builder = () => {
   const handleRadio = (x) => {
     // setStoredColors({ ...storedColors, navBackground: colors.navBackground });
     setRadio(x);
-    if (x === 'transparentNavBg') {
+    if (x === 'bgColor') {
+      setColorPickerText('Page Background Color');
+    } else if (x === 'linkColor') {
+      setColorPickerText('Link Color');
+    } else if (x === 'transparentNavBg') {
       //   setStoredColors({ ...storedColors, navBackground: colors.navBackground });
       setColors({ ...colors, navBackground: 'transparent' });
+      setColorPickerText('Choose an Element');
     } else if (x === 'navBgColor') {
       setColors({ ...colors, navBackground: storedColors.navBackground });
+      setColorPickerText('Navbar Background Color');
     } else if (x === 'navbarPositionFixed') {
       setNavbarPosition('fixed');
     } else if (x === 'navbarPositionStatic') {
@@ -125,8 +131,10 @@ const Builder = () => {
       setLinkHoverState('scale');
     } else if (x === 'linksHoverColor') {
       setLinkHoverState('color');
+      setColorPickerText('Links On Hover Color');
     } else if (x === 'linksHoverScaleAndColor') {
       setLinkHoverState('scaleandcolor');
+      setColorPickerText('Links On Hover Color');
     }
   };
 
@@ -466,8 +474,11 @@ const Builder = () => {
           {/* FOOTER */}
           {/* FOOTER */}
           <div id='attributes-footer'>
-            <div></div>
-            <button className='circle-btn' onClick={() => handleClick(radio)} />
+            {/* <div></div> */}
+            <button className='circle-btn' />
+            <div id='color-picker' onClick={() => handleClick(radio)}>
+              <h3>{colorPickerText}</h3>
+            </div>
             {colorPicker ? (
               <div style={popover}>
                 <div style={cover} onClick={handleClose} />
