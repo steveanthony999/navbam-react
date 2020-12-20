@@ -11,6 +11,7 @@ const Navbar = ({
   linkHoverState,
   hoverLinkColor,
   mobileNavDrawerBackground,
+  mobileNavDrawerLinkColor,
 }) => {
   const [navOpen, setNavOpen] = useState(false);
 
@@ -82,6 +83,11 @@ const Navbar = ({
   const mobileMenuStyle = {
     transform: navOpen ? 'scaleY(1) translateX(-50%)' : 'scaleY(0) translateX(-50%)',
     backgroundColor: mobileNavDrawerBackground,
+    position: navbarPosition === 'fixed' ? 'fixed' : 'absolute',
+  };
+
+  const mobileLinkStyle = {
+    color: mobileNavDrawerLinkColor,
   };
 
   return (
@@ -125,19 +131,19 @@ const Navbar = ({
       {/* MOBILE MENU */}
       <div id='nav-mobile-menu' style={mobileMenuStyle}>
         <div id='nav-mobile-links'>
-          <Link to='/about' style={linkStyle}>
+          <Link to='/about' style={mobileLinkStyle}>
             About
           </Link>
-          <Link to='/blog' style={linkStyle}>
+          <Link to='/blog' style={mobileLinkStyle}>
             Blog
           </Link>
-          <Link to='/pricing' style={linkStyle}>
+          <Link to='/pricing' style={mobileLinkStyle}>
             Pricing
           </Link>
-          <Link to='/contact' style={linkStyle}>
+          <Link to='/contact' style={mobileLinkStyle}>
             Contact
           </Link>
-          <Link to='/shop' style={linkStyle}>
+          <Link to='/shop' style={mobileLinkStyle}>
             Shop
           </Link>
         </div>

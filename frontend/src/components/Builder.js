@@ -14,6 +14,7 @@ const Builder = () => {
     linkColor: '#ffffff',
     hoverLinkColor: '#3344ff',
     mobileNavDrawerBackground: '#333333',
+    mobileNavDrawerLinkColor: '#ffffff',
   });
 
   const [storedColors, setStoredColors] = useState({
@@ -71,6 +72,8 @@ const Builder = () => {
       setColors({ ...colors, hoverLinkColor: color.hex });
     } else if (radio === 'mobileNavDrawerBackgroundColor') {
       setColors({ ...colors, mobileNavDrawerBackground: color.hex });
+    } else if (radio === 'mobileNavDrawerLinkColor') {
+      setColors({ ...colors, mobileNavDrawerLinkColor: color.hex });
     }
   };
 
@@ -140,6 +143,8 @@ const Builder = () => {
       setColorPickerText('Links On Hover Color');
     } else if (x === 'mobileNavDrawerBackgroundColor') {
       setColorPickerText('Mobile Nav Drawer Background Color');
+    } else if (x === 'mobileNavDrawerLinkColor') {
+      setColorPickerText('Mobile Nav Drawer Link Color');
     }
   };
 
@@ -170,6 +175,7 @@ const Builder = () => {
         linkHoverState={linkHoverState}
         hoverLinkColor={colors.hoverLinkColor}
         mobileNavDrawerBackground={colors.mobileNavDrawerBackground}
+        mobileNavDrawerLinkColor={colors.mobileNavDrawerLinkColor}
       />
       <div style={style} id='builder'>
         {/* <div id='builder'> */}
@@ -493,6 +499,18 @@ const Builder = () => {
             >
               Mobile Nav Drawer Background Color
             </Radio>
+            <Radio
+              name='component'
+              value='mobileNavDrawerLinkColor'
+              shape='round'
+              variant='fill'
+              animation='jelly'
+              color='info'
+              bigger
+              onChange={() => handleRadio('mobileNavDrawerLinkColor')}
+            >
+              Mobile Nav Drawer Link Color
+            </Radio>
           </div>
           {/* FOOTER */}
           {/* FOOTER */}
@@ -518,7 +536,9 @@ const Builder = () => {
                       ? colors.hoverLinkColor
                       : radio === 'linksHoverScaleAndColor'
                       ? colors.hoverLinkColor
-                      : radio === 'mobileNavDrawerBackgroundColor' && colors.mobileNavDrawerBackground
+                      : radio === 'mobileNavDrawerBackgroundColor'
+                      ? colors.mobileNavDrawerBackground
+                      : radio === 'mobileNavDrawerLinkColor' && colors.mobileNavDrawerLinkColor
                   }
                   onChange={handleColorChange}
                   disableAlpha={true}
@@ -714,7 +734,7 @@ ${
 
 #nav-mobile-links a {
   text-decoration: none;
-  color: ${colors.linkColor};
+  color: ${colors.mobileNavDrawerLinkColor};
 }`}
         />
         <CodeText
