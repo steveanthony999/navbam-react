@@ -11,7 +11,7 @@ const Navbar = ({
   linkHoverState,
   hoverLinkColor,
 }) => {
-  //   const [isHover, setIsHover] = useState('none');
+  //   const [navOpen, setNavOpen] = useState(false);
 
   const navStyle = {
     width: navbarViewWidth,
@@ -47,6 +47,10 @@ const Navbar = ({
     }
   };
 
+  const toggleNavIcon = (e) => {
+    document.getElementById('nav-icon').classList.toggle('open');
+  };
+
   const innerNavStyle = {
     width: navbarWidth,
     padding: `${navbarHeight} 0`,
@@ -57,6 +61,18 @@ const Navbar = ({
     color: linkColor,
   };
 
+  const navIconSpan = {
+    backgroundColor: linkColor,
+  };
+
+  const mobileStyle = {
+    display: navbarViewWidth === '480px' ? 'block' : 'none',
+  };
+
+  const desktopStyle = {
+    display: navbarViewWidth === '480px' ? 'none' : 'block',
+  };
+
   return (
     <nav id='navbar' style={navStyle}>
       <div id='nav-container' style={innerNavStyle}>
@@ -65,7 +81,7 @@ const Navbar = ({
             Nav<span>Bam</span>
           </Link>
         </div>
-        <div id='nav-links'>
+        <div id='nav-links' style={desktopStyle}>
           <Link to='/about' style={linkStyle} onMouseEnter={linkHover} onMouseLeave={linkHoverExit}>
             About
           </Link>
@@ -81,6 +97,15 @@ const Navbar = ({
           <Link to='/shop' style={linkStyle} onMouseEnter={linkHover} onMouseLeave={linkHoverExit}>
             Shop
           </Link>
+        </div>
+        {/* MOBILE */}
+        <div id='nav-links-mobile' style={mobileStyle}>
+          <div id='nav-icon' onClick={toggleNavIcon}>
+            <span className='nav-icon-span' style={navIconSpan}></span>
+            <span className='nav-icon-span' style={navIconSpan}></span>
+            <span className='nav-icon-span' style={navIconSpan}></span>
+            <span className='nav-icon-span' style={navIconSpan}></span>
+          </div>
         </div>
       </div>
     </nav>
