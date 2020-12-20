@@ -13,6 +13,7 @@ const Builder = () => {
     navBackground: '#333333',
     linkColor: '#ffffff',
     hoverLinkColor: '#3344ff',
+    mobileNavDrawerBackground: '#333333',
   });
 
   const [storedColors, setStoredColors] = useState({
@@ -68,6 +69,8 @@ const Builder = () => {
       setColors({ ...colors, hoverLinkColor: color.hex });
     } else if (radio === 'linksHoverScaleAndColor') {
       setColors({ ...colors, hoverLinkColor: color.hex });
+    } else if (radio === 'mobileNavDrawerBackgroundColor') {
+      setColors({ ...colors, mobileNavDrawerBackground: color.hex });
     }
   };
 
@@ -135,6 +138,8 @@ const Builder = () => {
     } else if (x === 'linksHoverScaleAndColor') {
       setLinkHoverState('scaleandcolor');
       setColorPickerText('Links On Hover Color');
+    } else if (x === 'mobileNavDrawerBackgroundColor') {
+      setColorPickerText('Mobile Nav Drawer Background Color');
     }
   };
 
@@ -164,6 +169,7 @@ const Builder = () => {
         navbarViewWidth={navbarViewWidth}
         linkHoverState={linkHoverState}
         hoverLinkColor={colors.hoverLinkColor}
+        mobileNavDrawerBackground={colors.mobileNavDrawerBackground}
       />
       <div style={style} id='builder'>
         {/* <div id='builder'> */}
@@ -469,6 +475,24 @@ const Builder = () => {
             >
               Links Hover - Scale and Color
             </Radio>
+            {/* ================= MOBILE NAV DRAWER */}
+            <div className='title-box'>
+              <hr />
+              <h6>MOBILE NAV DRAWER</h6>
+              <hr />
+            </div>
+            <Radio
+              name='component'
+              value='mobileNavDrawerBackgroundColor'
+              shape='round'
+              variant='fill'
+              animation='jelly'
+              color='info'
+              bigger
+              onChange={() => handleRadio('mobileNavDrawerBackgroundColor')}
+            >
+              Mobile Nav Drawer Background Color
+            </Radio>
           </div>
           {/* FOOTER */}
           {/* FOOTER */}
@@ -492,7 +516,9 @@ const Builder = () => {
                       ? colors.linkColor
                       : radio === 'linksHoverColor'
                       ? colors.hoverLinkColor
-                      : radio === 'linksHoverScaleAndColor' && colors.hoverLinkColor
+                      : radio === 'linksHoverScaleAndColor'
+                      ? colors.hoverLinkColor
+                      : radio === 'mobileNavDrawerBackgroundColor' && colors.mobileNavDrawerBackground
                   }
                   onChange={handleColorChange}
                   disableAlpha={true}
@@ -585,7 +611,6 @@ ${
 }`
     : ''
 }
-
 #nav-links-mobile {
   display: none;
 }
@@ -661,15 +686,68 @@ ${
   top: 18px;
   width: 0%;
   left: 50%;
+}
+
+#nav-mobile-menu {
+  width: 100%;
+  height: 500px;
+  background: ${colors.mobileNavDrawerBackground};
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: 0.2s;
+}
+
+#nav-mobile-links {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#nav-mobile-links a {
+  text-decoration: none;
+  color: ${colors.linkColor};
 }`}
         />
         <CodeText
           id={'javascript-code'}
           title={'JAVASCRIPT'}
           textSelectId={'javascript-select'}
-          theCode={
-            navbarShrink
-              ? `const nav = document.querySelector('nav');
+          theCode={`
+const navIcon = document.getElementById('nav-icon');
+
+navIcon.addEventListener('click', () => {
+  navIcon.classList.toggle('open');
+});
+
+const navMobileMenu = document.getElementById('nav-mobile-menu');
+const body = document.querySelector('body');
+
+navIcon.onclick = () => {
+  openCloseNav(navIcon.classList.value);
+};
+
+function openCloseNav(navOpen) {
+  if (navOpen === 'open') {
+    navMobileMenu.style.transform = 'scaleY(1)';
+    body.style.overflow = 'hidden';
+  } else {
+    navMobileMenu.style.transform = 'scaleY(0)';
+    body.style.overflow = 'scroll';
+  }
+}
+
+${
+  navbarShrink
+    ? `const nav = document.querySelector('nav');
 
 window.onscroll = () => scrollNav();
 
@@ -681,8 +759,8 @@ function scrollNav() {
   }
 }
           `
-              : ''
-          }
+    : ''
+}`}
         />
       </div>
       <div id='section-2'></div>

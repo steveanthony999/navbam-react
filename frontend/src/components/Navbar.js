@@ -10,8 +10,9 @@ const Navbar = ({
   navbarViewWidth,
   linkHoverState,
   hoverLinkColor,
+  mobileNavDrawerBackground,
 }) => {
-  //   const [navOpen, setNavOpen] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
 
   const navStyle = {
     width: navbarViewWidth,
@@ -49,6 +50,11 @@ const Navbar = ({
 
   const toggleNavIcon = (e) => {
     document.getElementById('nav-icon').classList.toggle('open');
+    if (navOpen === true) {
+      setNavOpen(false);
+    } else {
+      setNavOpen(true);
+    }
   };
 
   const innerNavStyle = {
@@ -73,42 +79,70 @@ const Navbar = ({
     display: navbarViewWidth === '480px' ? 'none' : 'block',
   };
 
+  const mobileMenuStyle = {
+    transform: navOpen ? 'scaleY(1) translateX(-50%)' : 'scaleY(0) translateX(-50%)',
+    backgroundColor: mobileNavDrawerBackground,
+  };
+
   return (
-    <nav id='navbar' style={navStyle}>
-      <div id='nav-container' style={innerNavStyle}>
-        <div id='nav-logo'>
-          <Link to='/' style={linkStyle}>
-            Nav<span>Bam</span>
-          </Link>
+    <>
+      <nav id='navbar' style={navStyle}>
+        <div id='nav-container' style={innerNavStyle}>
+          <div id='nav-logo'>
+            <Link to='/' style={linkStyle}>
+              Nav<span>Bam</span>
+            </Link>
+          </div>
+          <div id='nav-links' style={desktopStyle}>
+            <Link to='/about' style={linkStyle} onMouseEnter={linkHover} onMouseLeave={linkHoverExit}>
+              About
+            </Link>
+            <Link to='/blog' style={linkStyle} onMouseEnter={linkHover} onMouseLeave={linkHoverExit}>
+              Blog
+            </Link>
+            <Link to='/pricing' style={linkStyle} onMouseEnter={linkHover} onMouseLeave={linkHoverExit}>
+              Pricing
+            </Link>
+            <Link to='/contact' style={linkStyle} onMouseEnter={linkHover} onMouseLeave={linkHoverExit}>
+              Contact
+            </Link>
+            <Link to='/shop' style={linkStyle} onMouseEnter={linkHover} onMouseLeave={linkHoverExit}>
+              Shop
+            </Link>
+          </div>
+          {/* MOBILE */}
+          {/* NAV ICON */}
+          <div id='nav-links-mobile' style={mobileStyle}>
+            <div id='nav-icon' onClick={toggleNavIcon}>
+              <span className='nav-icon-span' style={navIconSpan}></span>
+              <span className='nav-icon-span' style={navIconSpan}></span>
+              <span className='nav-icon-span' style={navIconSpan}></span>
+              <span className='nav-icon-span' style={navIconSpan}></span>
+            </div>
+          </div>
         </div>
-        <div id='nav-links' style={desktopStyle}>
-          <Link to='/about' style={linkStyle} onMouseEnter={linkHover} onMouseLeave={linkHoverExit}>
+      </nav>
+      {/* MOBILE MENU */}
+      <div id='nav-mobile-menu' style={mobileMenuStyle}>
+        <div id='nav-mobile-links'>
+          <Link to='/about' style={linkStyle}>
             About
           </Link>
-          <Link to='/blog' style={linkStyle} onMouseEnter={linkHover} onMouseLeave={linkHoverExit}>
+          <Link to='/blog' style={linkStyle}>
             Blog
           </Link>
-          <Link to='/pricing' style={linkStyle} onMouseEnter={linkHover} onMouseLeave={linkHoverExit}>
+          <Link to='/pricing' style={linkStyle}>
             Pricing
           </Link>
-          <Link to='/contact' style={linkStyle} onMouseEnter={linkHover} onMouseLeave={linkHoverExit}>
+          <Link to='/contact' style={linkStyle}>
             Contact
           </Link>
-          <Link to='/shop' style={linkStyle} onMouseEnter={linkHover} onMouseLeave={linkHoverExit}>
+          <Link to='/shop' style={linkStyle}>
             Shop
           </Link>
         </div>
-        {/* MOBILE */}
-        <div id='nav-links-mobile' style={mobileStyle}>
-          <div id='nav-icon' onClick={toggleNavIcon}>
-            <span className='nav-icon-span' style={navIconSpan}></span>
-            <span className='nav-icon-span' style={navIconSpan}></span>
-            <span className='nav-icon-span' style={navIconSpan}></span>
-            <span className='nav-icon-span' style={navIconSpan}></span>
-          </div>
-        </div>
       </div>
-    </nav>
+    </>
   );
 };
 
