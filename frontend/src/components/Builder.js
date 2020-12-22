@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import Navbar from './Navbar';
-import CodeText from './CodeText';
+// import CodeText from './CodeText';
 import { ChromePicker } from 'react-color';
 import { Radio } from 'pretty-checkbox-react';
 import '@djthoms/pretty-checkbox';
+import { Link } from 'react-router-dom';
+import BgImg from '../images/background.png';
 
 const Builder = () => {
   const [radio, setRadio] = useState();
@@ -31,10 +33,7 @@ const Builder = () => {
   const [navbarShrink, setNavbarShrink] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [linkHoverState, setLinkHoverState] = useState('none');
-
-  const style = {
-    background: colors.background,
-  };
+  const [scrollText, setScrollText] = useState('Scroll down to see how the navbar reacts');
 
   useEffect(() => {
     const onScroll = () => {
@@ -47,6 +46,11 @@ const Builder = () => {
         }
       } else {
         setNavbarHeight(storedNavbarHeight);
+        if (scrollY > 100) {
+          setScrollText(':)');
+        } else if (scrollY < 100) {
+          setScrollText('Scroll down to see how the navbar reacts');
+        }
       }
     };
 
@@ -146,6 +150,11 @@ const Builder = () => {
     } else if (x === 'mobileNavDrawerLinkColor') {
       setColorPickerText('Mobile Nav Drawer Link Color');
     }
+  };
+
+  const style = {
+    background: `url(${BgImg}) no-repeat center center/cover`,
+    backgroundColor: colors.background,
   };
 
   const popover = {
@@ -548,10 +557,16 @@ const Builder = () => {
           </div>
         </div>
 
+        <Link to='/code' className='code-btn'>
+          Generate Code
+        </Link>
+        <div className='scroll-text'>
+          <p>{scrollText}</p>
+        </div>
         {/* TEXTAREA */}
         {/* TEXTAREA */}
         {/* TEXTAREA */}
-        <CodeText
+        {/* <CodeText
           id={'html-code'}
           title={'HTML'}
           textSelectId={'html-select'}
@@ -586,9 +601,9 @@ const Builder = () => {
     </div>
   </div>
 </nav>`}
-        />
+        /> */}
 
-        <CodeText
+        {/* <CodeText
           id={'css-code'}
           title={'CSS'}
           textSelectId={'css-select'}
@@ -736,8 +751,8 @@ ${
   text-decoration: none;
   color: ${colors.mobileNavDrawerLinkColor};
 }`}
-        />
-        <CodeText
+        /> */}
+        {/* <CodeText
           id={'javascript-code'}
           title={'JAVASCRIPT'}
           textSelectId={'javascript-select'}
@@ -781,9 +796,12 @@ function scrollNav() {
           `
     : ''
 }`}
-        />
+        /> */}
       </div>
-      <div id='section-2'></div>
+      <div id='section-2'>
+        <h6>Thank you for using NavBam!</h6>
+        <p>made with love by steve.vegas &copy; 2020</p>
+      </div>
     </>
   );
 };
