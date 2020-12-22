@@ -418,9 +418,15 @@ const Builder = () => {
                 bigger
                 onChange={() => handleRadio('navbarWidthWide')}
                 defaultChecked
+                data-tip
+                data-for='navbar-wide'
+                data-delay-show={500}
               >
                 Navbar Width - Wide
               </Radio>
+              <ReactTooltip id='navbar-wide'>
+                Your logo and links will be pushed to the edge of the screen.
+              </ReactTooltip>
               <p>{navbarWidth}</p>
             </div>
             <div className='attributes-wrapper'>
@@ -433,9 +439,15 @@ const Builder = () => {
                 color='info'
                 bigger
                 onChange={() => handleRadio('navbarWidthContained')}
+                data-tip
+                data-for='navbar-contained'
+                data-delay-show={500}
               >
                 Navbar Width - Contained
               </Radio>
+              <ReactTooltip id='navbar-contained'>
+                Your logo and links will be in a container that's 1100px max.
+              </ReactTooltip>
             </div>
             {/* ================= NAVBAR HEIGHT */}
             <div className='title-box'>
@@ -454,9 +466,13 @@ const Builder = () => {
                 bigger
                 onChange={() => handleRadio('navbarHeightShort')}
                 defaultChecked
+                data-tip
+                data-for='navbar-short'
+                data-delay-show={500}
               >
                 Navbar Height - Short
               </Radio>
+              <ReactTooltip id='navbar-short'>The height of your navbar will be 0.</ReactTooltip>
               <p>{navbarHeight}</p>
             </div>
             <div className='attributes-wrapper'>
@@ -469,9 +485,15 @@ const Builder = () => {
                 color='info'
                 bigger
                 onChange={() => handleRadio('navbarHeightMedium')}
+                data-tip
+                data-for='navbar-medium'
+                data-delay-show={500}
               >
                 Navbar Height - Medium
               </Radio>
+              <ReactTooltip id='navbar-medium'>
+                The height of your navbar will be 1rem above and below your links.
+              </ReactTooltip>
             </div>
             <div className='attributes-wrapper'>
               <Radio
@@ -483,9 +505,15 @@ const Builder = () => {
                 color='info'
                 bigger
                 onChange={() => handleRadio('navbarHeightTall')}
+                data-tip
+                data-for='navbar-tall'
+                data-delay-show={500}
               >
                 Navbar Height - Tall
               </Radio>
+              <ReactTooltip id='navbar-tall'>
+                The height of your navbar will be 2rem above and below your links.
+              </ReactTooltip>
             </div>
             {/* ================= NAVBAR SHRINK ON SCROLL */}
             <div className='title-box'>
@@ -504,9 +532,15 @@ const Builder = () => {
                 bigger
                 onChange={() => handleRadio('navbarShrinkOff')}
                 defaultChecked
+                data-tip
+                data-for='navbar-shrink-off'
+                data-delay-show={500}
               >
                 Navbar Shrink - Off
               </Radio>
+              <ReactTooltip id='navbar-shrink-off'>
+                This will maintain the height of your navbar while scrolling.
+              </ReactTooltip>
               <p>{navbarShrink ? 'On' : 'Off'}</p>
             </div>
             <div className='attributes-wrapper'>
@@ -519,9 +553,16 @@ const Builder = () => {
                 color='info'
                 bigger
                 onChange={() => handleRadio('navbarShrinkOn')}
+                data-tip
+                data-for='navbar-shrink-on'
+                data-delay-show={500}
               >
                 Navbar Shrink - On
               </Radio>
+              <ReactTooltip id='navbar-shrink-on'>
+                This changes the height of your navbar to 0 (short) during scrolling. P.S. This only works if your
+                navbar position is set to Fixed and the height is set to at least Medium.
+              </ReactTooltip>
             </div>
             {/* ================= LINKS HOVER EFFECTS */}
             <div className='title-box'>
@@ -540,9 +581,15 @@ const Builder = () => {
                 bigger
                 onChange={() => handleRadio('linksHoverNone')}
                 defaultChecked
+                data-tip
+                data-for='navbar-hover-none'
+                data-delay-show={500}
               >
                 Links Hover - None
               </Radio>
+              <ReactTooltip id='navbar-hover-none'>
+                Your links will have no effects when being hovered over.
+              </ReactTooltip>
               <p>{linkHoverState}</p>
             </div>
             <div className='attributes-wrapper'>
@@ -555,9 +602,15 @@ const Builder = () => {
                 color='info'
                 bigger
                 onChange={() => handleRadio('linksHoverScale')}
+                data-tip
+                data-for='navbar-hover-scale'
+                data-delay-show={500}
               >
                 Links Hover - Scale
               </Radio>
+              <ReactTooltip id='navbar-hover-scale'>
+                Your links will scale 1.2 times bigger than they are when hovered over.
+              </ReactTooltip>
             </div>
             <div className='attributes-wrapper'>
               <Radio
@@ -569,9 +622,13 @@ const Builder = () => {
                 color='info'
                 bigger
                 onChange={() => handleRadio('linksHoverColor')}
+                data-tip
+                data-for='navbar-hover-color'
+                data-delay-show={500}
               >
                 Links Hover - Color
               </Radio>
+              <ReactTooltip id='navbar-hover-color'>Your links will change color when they hovered over.</ReactTooltip>
               <p>{linkHoverState === 'color' || linkHoverState === 'scaleandcolor' ? colors.hoverLinkColor : ''}</p>
             </div>
             <div className='attributes-wrapper'>
@@ -584,9 +641,15 @@ const Builder = () => {
                 color='info'
                 bigger
                 onChange={() => handleRadio('linksHoverScaleAndColor')}
+                data-tip
+                data-for='navbar-hover-scale-and-color'
+                data-delay-show={500}
               >
                 Links Hover - Scale and Color
               </Radio>
+              <ReactTooltip id='navbar-hover-scale-and-color'>
+                Your links will both scale 1.2 times bigger and change color when they hovered over.
+              </ReactTooltip>
             </div>
             {/* ================= MOBILE NAV DRAWER */}
             <div className='title-box'>
@@ -604,9 +667,15 @@ const Builder = () => {
                 color='info'
                 bigger
                 onChange={() => handleRadio('mobileNavDrawerBackgroundColor')}
+                data-tip
+                data-for='navbar-mobile-drawer-background'
+                data-delay-show={500}
               >
                 Drawer Background Color
               </Radio>
+              <ReactTooltip id='navbar-mobile-drawer-background'>
+                Change the color of the background of the drawer (links menu) for mobile displays.
+              </ReactTooltip>
               <p>{colors.mobileNavDrawerBackground}</p>
             </div>
             <div className='attributes-wrapper'>
@@ -619,9 +688,15 @@ const Builder = () => {
                 color='info'
                 bigger
                 onChange={() => handleRadio('mobileNavDrawerLinkColor')}
+                data-tip
+                data-for='navbar-mobile-drawer-link-color'
+                data-delay-show={500}
               >
                 Drawer Link Color
               </Radio>
+              <ReactTooltip id='navbar-mobile-drawer-link-color'>
+                Change the color of the links in your mobile drawer.
+              </ReactTooltip>
               <p>{colors.mobileNavDrawerLinkColor}</p>
             </div>
           </div>
