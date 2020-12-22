@@ -2,7 +2,7 @@ import CodeText from './CodeText';
 
 const Code = (props) => {
   return (
-    <div>
+    <div id='code-container'>
       <CodeText
         id={'html-code'}
         title={'HTML'}
@@ -45,9 +45,10 @@ const Code = (props) => {
         title={'CSS'}
         textSelectId={'css-select'}
         theCode={`nav { 
-  background-color: ${props.location.state.navBackground} 
+  background-color: ${props.location.state.navBackground}; 
   width: 100%;
   position: ${props.location.state.navbarPosition};
+  transition: 0.2s;
 }
 
 #nav-container {
@@ -187,6 +188,21 @@ ${
 #nav-mobile-links a {
   text-decoration: none;
   color: ${props.location.state.mobileNavDrawerLinkColor};
+}
+
+/* media query mobile */
+@media screen and (max-width: 480px) {
+  #nav-links {
+    display: none;
+  }
+
+  #nav-links-mobile {
+    display: block;
+  }
+
+  #nav-container {
+    width: 100%;
+  }
 }`}
       />
 
