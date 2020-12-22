@@ -46,11 +46,11 @@ const Builder = () => {
         }
       } else {
         setNavbarHeight(storedNavbarHeight);
-        if (scrollY > 100) {
-          setScrollText(':)');
-        } else if (scrollY < 100) {
-          setScrollText('Scroll down to see how the navbar reacts');
-        }
+      }
+      if (scrollY > 100) {
+        setScrollText(':)');
+      } else if (scrollY < 100) {
+        setScrollText('Scroll down to see how the navbar reacts');
       }
     };
 
@@ -170,6 +170,22 @@ const Builder = () => {
     right: '0px',
     bottom: '0px',
     left: '0px',
+  };
+
+  const newTo = {
+    pathname: '/code',
+    state: {
+      navBackground: colors.navBackground,
+      navbarPosition: navbarPosition,
+      navbarWidth: navbarWidth,
+      storedNavbarHeight: storedNavbarHeight,
+      linkColor: colors.linkColor,
+      linkHoverState: linkHoverState,
+      hoverLinkColor: colors.hoverLinkColor,
+      mobileNavDrawerBackground: colors.mobileNavDrawerBackground,
+      mobileNavDrawerLinkColor: colors.mobileNavDrawerLinkColor,
+      navbarShrink: navbarShrink,
+    },
   };
 
   return (
@@ -557,7 +573,7 @@ const Builder = () => {
           </div>
         </div>
 
-        <Link to='/code' className='code-btn'>
+        <Link to={newTo} className='code-btn'>
           Generate Code
         </Link>
         <div className='scroll-text'>

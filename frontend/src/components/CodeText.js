@@ -30,8 +30,10 @@ const CodeText = ({ theCode, id, title, textSelectId }) => {
   };
 
   return (
-    <div className='code-box-container' id={id} style={style}>
-      <div className='code-box-header' onClick={() => handleClick(id)}>
+    // <div className='code-box-container' id={id} style={style}>
+    <div className='code-box-container' id={id}>
+      {/* <div className='code-box-header' onClick={() => handleClick(id)}> */}
+      <div className='code-box-header'>
         <h3>{title}</h3>
       </div>
       <div className='code-box-body'>
