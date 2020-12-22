@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import ReactTooltip from 'react-tooltip';
 import Navbar from './Navbar';
 // import CodeText from './CodeText';
 import { ChromePicker } from 'react-color';
@@ -215,9 +216,13 @@ const Builder = () => {
             bigger
             onChange={() => handleRadio('viewWidthDesktop')}
             defaultChecked
+            data-tip
+            data-for='desktop'
+            data-delay-show={500}
           >
             Desktop
           </Radio>
+          <ReactTooltip id='desktop'>View navbar on desktop</ReactTooltip>
           <Radio
             name='viewWidth'
             value='viewWidthTablet'
@@ -227,9 +232,13 @@ const Builder = () => {
             color='info'
             bigger
             onChange={() => handleRadio('viewWidthTablet')}
+            data-tip
+            data-for='tablet'
+            data-delay-show={500}
           >
             Tablet
           </Radio>
+          <ReactTooltip id='tablet'>View navbar on tablet</ReactTooltip>
           <Radio
             name='viewWidth'
             value='viewWidthMobile'
@@ -239,9 +248,13 @@ const Builder = () => {
             color='info'
             bigger
             onChange={() => handleRadio('viewWidthMobile')}
+            data-tip
+            data-for='mobile'
+            data-delay-show={500}
           >
             Mobile
           </Radio>
+          <ReactTooltip id='mobile'>View navbar on mobile</ReactTooltip>
         </div>
         <div id='attributes-window'>
           {/* HEADER */}
@@ -255,287 +268,362 @@ const Builder = () => {
           {/* BODY */}
           <div id='attributes-body'>
             {/* ================= PAGE BACKGROUND COLOR */}
-            <Radio
-              name='component'
-              value='bgColor'
-              shape='round'
-              variant='fill'
-              animation='jelly'
-              color='info'
-              bigger
-              onChange={() => handleRadio('bgColor')}
-            >
-              Page Background Color
-            </Radio>
+            <div className='attributes-wrapper'>
+              <Radio
+                name='component'
+                value='bgColor'
+                shape='round'
+                variant='fill'
+                animation='jelly'
+                color='info'
+                bigger
+                onChange={() => handleRadio('bgColor')}
+                data-tip
+                data-for='page-background'
+                data-delay-show={500}
+              >
+                Page Background Color
+              </Radio>
+              <ReactTooltip id='page-background'>Choose a color closest to the background of your site</ReactTooltip>
+              <p>{colors.background}</p>
+            </div>
             {/* ================= NAVBAR BACKGROUND COLOR */}
             <div className='title-box'>
               <hr />
               <h6>NAVBAR BACKGROUND COLOR</h6>
               <hr />
             </div>
-            <Radio
-              name='component'
-              value='navBgColor'
-              shape='round'
-              variant='fill'
-              animation='jelly'
-              color='info'
-              bigger
-              onChange={() => handleRadio('navBgColor')}
-            >
-              Navbar Background Color
-            </Radio>
-            <Radio
-              name='component'
-              value='transparentNavBg'
-              shape='round'
-              variant='fill'
-              animation='jelly'
-              color='info'
-              bigger
-              onChange={() => handleRadio('transparentNavBg')}
-            >
-              Transparent Navbar
-            </Radio>
+            <div className='attributes-wrapper'>
+              <Radio
+                name='component'
+                value='navBgColor'
+                shape='round'
+                variant='fill'
+                animation='jelly'
+                color='info'
+                bigger
+                onChange={() => handleRadio('navBgColor')}
+                data-tip
+                data-for='navbar-background'
+                data-delay-show={500}
+              >
+                Navbar Background Color
+              </Radio>
+              <ReactTooltip id='navbar-background'>What color would you like your navbar to be?</ReactTooltip>
+              <p>{colors.navBackground}</p>
+            </div>
+            <div className='attributes-wrapper'>
+              <Radio
+                name='component'
+                value='transparentNavBg'
+                shape='round'
+                variant='fill'
+                animation='jelly'
+                color='info'
+                bigger
+                onChange={() => handleRadio('transparentNavBg')}
+                data-tip
+                data-for='navbar-transparent'
+                data-delay-show={500}
+              >
+                Transparent Navbar
+              </Radio>
+              <ReactTooltip id='navbar-transparent'>If you don't want a colored navbar, choose tranparent</ReactTooltip>
+            </div>
             {/* ================= LINKS COLOR */}
             <div className='title-box'>
               <hr />
               <h6>LINKS COLOR</h6>
               <hr />
             </div>
-            <Radio
-              name='component'
-              value='linkColor'
-              shape='round'
-              variant='fill'
-              animation='jelly'
-              color='info'
-              bigger
-              onChange={() => handleRadio('linkColor')}
-            >
-              Links Color
-            </Radio>
+            <div className='attributes-wrapper'>
+              <Radio
+                name='component'
+                value='linkColor'
+                shape='round'
+                variant='fill'
+                animation='jelly'
+                color='info'
+                bigger
+                onChange={() => handleRadio('linkColor')}
+                data-tip
+                data-for='link-color'
+                data-delay-show={500}
+              >
+                Links Color
+              </Radio>
+              <ReactTooltip id='link-color'>
+                Change the color of your links. P.S. You'll have to style your logo separately.
+              </ReactTooltip>
+              <p>{colors.linkColor}</p>
+            </div>
             {/* ================= NAVBAR POSITION */}
             <div className='title-box'>
               <hr />
               <h6>NAVBAR POSITION</h6>
               <hr />
             </div>
-            <Radio
-              name='navbarPosition'
-              value='navbarPositionStatic'
-              shape='round'
-              variant='fill'
-              animation='jelly'
-              color='info'
-              bigger
-              onChange={() => handleRadio('navbarPositionStatic')}
-              defaultChecked
-            >
-              Navbar Position - Static
-            </Radio>
-            <Radio
-              name='navbarPosition'
-              value='navbarPositionFixed'
-              shape='round'
-              variant='fill'
-              animation='jelly'
-              color='info'
-              bigger
-              onChange={() => handleRadio('navbarPositionFixed')}
-            >
-              Navbar Position - Fixed
-            </Radio>
+            <div className='attributes-wrapper'>
+              <Radio
+                name='navbarPosition'
+                value='navbarPositionStatic'
+                shape='round'
+                variant='fill'
+                animation='jelly'
+                color='info'
+                bigger
+                onChange={() => handleRadio('navbarPositionStatic')}
+                defaultChecked
+                data-tip
+                data-for='navbar-static'
+                data-delay-show={500}
+              >
+                Navbar Position - Static
+              </Radio>
+              <ReactTooltip id='navbar-static'>Your navbar will scroll with the page.</ReactTooltip>
+              <p>{navbarPosition}</p>
+            </div>
+            <div className='attributes-wrapper'>
+              <Radio
+                name='navbarPosition'
+                value='navbarPositionFixed'
+                shape='round'
+                variant='fill'
+                animation='jelly'
+                color='info'
+                bigger
+                onChange={() => handleRadio('navbarPositionFixed')}
+                data-tip
+                data-for='navbar-fixed'
+                data-delay-show={500}
+              >
+                Navbar Position - Fixed
+              </Radio>
+              <ReactTooltip id='navbar-fixed'>Your navbar sticks right to the top of the page.</ReactTooltip>
+            </div>
             {/* ================= INNER NAVBAR WIDTH */}
             <div className='title-box'>
               <hr />
               <h6>INNER NAVBAR WIDTH</h6>
               <hr />
             </div>
-            <Radio
-              name='navbarWidth'
-              value='navbarWidthWide'
-              shape='round'
-              variant='fill'
-              animation='jelly'
-              color='info'
-              bigger
-              onChange={() => handleRadio('navbarWidthWide')}
-              defaultChecked
-            >
-              Navbar Width - Wide
-            </Radio>
-            <Radio
-              name='navbarWidth'
-              value='navbarWidthContained'
-              shape='round'
-              variant='fill'
-              animation='jelly'
-              color='info'
-              bigger
-              onChange={() => handleRadio('navbarWidthContained')}
-            >
-              Navbar Width - Contained
-            </Radio>
+            <div className='attributes-wrapper'>
+              <Radio
+                name='navbarWidth'
+                value='navbarWidthWide'
+                shape='round'
+                variant='fill'
+                animation='jelly'
+                color='info'
+                bigger
+                onChange={() => handleRadio('navbarWidthWide')}
+                defaultChecked
+              >
+                Navbar Width - Wide
+              </Radio>
+              <p>{navbarWidth}</p>
+            </div>
+            <div className='attributes-wrapper'>
+              <Radio
+                name='navbarWidth'
+                value='navbarWidthContained'
+                shape='round'
+                variant='fill'
+                animation='jelly'
+                color='info'
+                bigger
+                onChange={() => handleRadio('navbarWidthContained')}
+              >
+                Navbar Width - Contained
+              </Radio>
+            </div>
             {/* ================= NAVBAR HEIGHT */}
             <div className='title-box'>
               <hr />
               <h6>NAVBAR HEIGHT</h6>
               <hr />
             </div>
-            <Radio
-              name='navbarHeight'
-              value='navbarHeightShort'
-              shape='round'
-              variant='fill'
-              animation='jelly'
-              color='info'
-              bigger
-              onChange={() => handleRadio('navbarHeightShort')}
-              defaultChecked
-            >
-              Navbar Height - Short
-            </Radio>
-            <Radio
-              name='navbarHeight'
-              value='navbarHeightMedium'
-              shape='round'
-              variant='fill'
-              animation='jelly'
-              color='info'
-              bigger
-              onChange={() => handleRadio('navbarHeightMedium')}
-            >
-              Navbar Height - Medium
-            </Radio>
-            <Radio
-              name='navbarHeight'
-              value='navbarHeightTall'
-              shape='round'
-              variant='fill'
-              animation='jelly'
-              color='info'
-              bigger
-              onChange={() => handleRadio('navbarHeightTall')}
-            >
-              Navbar Height - Tall
-            </Radio>
+            <div className='attributes-wrapper'>
+              <Radio
+                name='navbarHeight'
+                value='navbarHeightShort'
+                shape='round'
+                variant='fill'
+                animation='jelly'
+                color='info'
+                bigger
+                onChange={() => handleRadio('navbarHeightShort')}
+                defaultChecked
+              >
+                Navbar Height - Short
+              </Radio>
+              <p>{navbarHeight}</p>
+            </div>
+            <div className='attributes-wrapper'>
+              <Radio
+                name='navbarHeight'
+                value='navbarHeightMedium'
+                shape='round'
+                variant='fill'
+                animation='jelly'
+                color='info'
+                bigger
+                onChange={() => handleRadio('navbarHeightMedium')}
+              >
+                Navbar Height - Medium
+              </Radio>
+            </div>
+            <div className='attributes-wrapper'>
+              <Radio
+                name='navbarHeight'
+                value='navbarHeightTall'
+                shape='round'
+                variant='fill'
+                animation='jelly'
+                color='info'
+                bigger
+                onChange={() => handleRadio('navbarHeightTall')}
+              >
+                Navbar Height - Tall
+              </Radio>
+            </div>
             {/* ================= NAVBAR SHRINK ON SCROLL */}
             <div className='title-box'>
               <hr />
               <h6>NAVBAR SHRINK ON SCROLL</h6>
               <hr />
             </div>
-            <Radio
-              name='navbarShrink'
-              value='navbarShrinkOff'
-              shape='round'
-              variant='fill'
-              animation='jelly'
-              color='info'
-              bigger
-              onChange={() => handleRadio('navbarShrinkOff')}
-              defaultChecked
-            >
-              Navbar Shrink - Off
-            </Radio>
-            <Radio
-              name='navbarShrink'
-              value='navbarShrinkOn'
-              shape='round'
-              variant='fill'
-              animation='jelly'
-              color='info'
-              bigger
-              onChange={() => handleRadio('navbarShrinkOn')}
-            >
-              Navbar Shrink - On
-            </Radio>
+            <div className='attributes-wrapper'>
+              <Radio
+                name='navbarShrink'
+                value='navbarShrinkOff'
+                shape='round'
+                variant='fill'
+                animation='jelly'
+                color='info'
+                bigger
+                onChange={() => handleRadio('navbarShrinkOff')}
+                defaultChecked
+              >
+                Navbar Shrink - Off
+              </Radio>
+              <p>{navbarShrink ? 'On' : 'Off'}</p>
+            </div>
+            <div className='attributes-wrapper'>
+              <Radio
+                name='navbarShrink'
+                value='navbarShrinkOn'
+                shape='round'
+                variant='fill'
+                animation='jelly'
+                color='info'
+                bigger
+                onChange={() => handleRadio('navbarShrinkOn')}
+              >
+                Navbar Shrink - On
+              </Radio>
+            </div>
             {/* ================= LINKS HOVER EFFECTS */}
             <div className='title-box'>
               <hr />
               <h6>LINKS HOVER EFFECTS</h6>
               <hr />
             </div>
-            <Radio
-              name='linksHover'
-              value='linksHoverNone'
-              shape='round'
-              variant='fill'
-              animation='jelly'
-              color='info'
-              bigger
-              onChange={() => handleRadio('linksHoverNone')}
-              defaultChecked
-            >
-              Links Hover - None
-            </Radio>
-            <Radio
-              name='linksHover'
-              value='linksHoverScale'
-              shape='round'
-              variant='fill'
-              animation='jelly'
-              color='info'
-              bigger
-              onChange={() => handleRadio('linksHoverScale')}
-            >
-              Links Hover - Scale
-            </Radio>
-            <Radio
-              name='linksHover'
-              value='linksHoverColor'
-              shape='round'
-              variant='fill'
-              animation='jelly'
-              color='info'
-              bigger
-              onChange={() => handleRadio('linksHoverColor')}
-            >
-              Links Hover - Color
-            </Radio>
-            <Radio
-              name='linksHover'
-              value='linksHoverScaleAndColor'
-              shape='round'
-              variant='fill'
-              animation='jelly'
-              color='info'
-              bigger
-              onChange={() => handleRadio('linksHoverScaleAndColor')}
-            >
-              Links Hover - Scale and Color
-            </Radio>
+            <div className='attributes-wrapper'>
+              <Radio
+                name='linksHover'
+                value='linksHoverNone'
+                shape='round'
+                variant='fill'
+                animation='jelly'
+                color='info'
+                bigger
+                onChange={() => handleRadio('linksHoverNone')}
+                defaultChecked
+              >
+                Links Hover - None
+              </Radio>
+              <p>{linkHoverState}</p>
+            </div>
+            <div className='attributes-wrapper'>
+              <Radio
+                name='linksHover'
+                value='linksHoverScale'
+                shape='round'
+                variant='fill'
+                animation='jelly'
+                color='info'
+                bigger
+                onChange={() => handleRadio('linksHoverScale')}
+              >
+                Links Hover - Scale
+              </Radio>
+            </div>
+            <div className='attributes-wrapper'>
+              <Radio
+                name='linksHover'
+                value='linksHoverColor'
+                shape='round'
+                variant='fill'
+                animation='jelly'
+                color='info'
+                bigger
+                onChange={() => handleRadio('linksHoverColor')}
+              >
+                Links Hover - Color
+              </Radio>
+              <p>{linkHoverState === 'color' || linkHoverState === 'scaleandcolor' ? colors.hoverLinkColor : ''}</p>
+            </div>
+            <div className='attributes-wrapper'>
+              <Radio
+                name='linksHover'
+                value='linksHoverScaleAndColor'
+                shape='round'
+                variant='fill'
+                animation='jelly'
+                color='info'
+                bigger
+                onChange={() => handleRadio('linksHoverScaleAndColor')}
+              >
+                Links Hover - Scale and Color
+              </Radio>
+            </div>
             {/* ================= MOBILE NAV DRAWER */}
             <div className='title-box'>
               <hr />
               <h6>MOBILE NAV DRAWER</h6>
               <hr />
             </div>
-            <Radio
-              name='component'
-              value='mobileNavDrawerBackgroundColor'
-              shape='round'
-              variant='fill'
-              animation='jelly'
-              color='info'
-              bigger
-              onChange={() => handleRadio('mobileNavDrawerBackgroundColor')}
-            >
-              Mobile Nav Drawer Background Color
-            </Radio>
-            <Radio
-              name='component'
-              value='mobileNavDrawerLinkColor'
-              shape='round'
-              variant='fill'
-              animation='jelly'
-              color='info'
-              bigger
-              onChange={() => handleRadio('mobileNavDrawerLinkColor')}
-            >
-              Mobile Nav Drawer Link Color
-            </Radio>
+            <div className='attributes-wrapper'>
+              <Radio
+                name='component'
+                value='mobileNavDrawerBackgroundColor'
+                shape='round'
+                variant='fill'
+                animation='jelly'
+                color='info'
+                bigger
+                onChange={() => handleRadio('mobileNavDrawerBackgroundColor')}
+              >
+                Drawer Background Color
+              </Radio>
+              <p>{colors.mobileNavDrawerBackground}</p>
+            </div>
+            <div className='attributes-wrapper'>
+              <Radio
+                name='component'
+                value='mobileNavDrawerLinkColor'
+                shape='round'
+                variant='fill'
+                animation='jelly'
+                color='info'
+                bigger
+                onChange={() => handleRadio('mobileNavDrawerLinkColor')}
+              >
+                Drawer Link Color
+              </Radio>
+              <p>{colors.mobileNavDrawerLinkColor}</p>
+            </div>
           </div>
           {/* FOOTER */}
           {/* FOOTER */}
