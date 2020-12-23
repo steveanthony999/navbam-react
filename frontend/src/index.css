@@ -291,8 +291,6 @@ textarea:focus {
   border-radius: 30px;
   display: flex;
   flex-direction: column;
-  /* position: relative; */
-  /* margin-top: -35%; */
   position: fixed;
   left: 50%;
   top: 240px;
