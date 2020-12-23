@@ -658,6 +658,10 @@ textarea:focus {
   margin-bottom: 2rem;
 }
 
+#builder-info {
+  display: none;
+}
+
 @media screen and (min-width: 415px) and (max-width: 768px) {
   #view-width {
     top: 110px;
@@ -678,56 +682,18 @@ textarea:focus {
 }
 
 @media screen and (max-width: 414px) {
-  #view-width {
-    width: 90%;
-    border: 3px solid var(--color-grey-darkest);
-    border-radius: 0;
-    position: absolute;
-    top: 130px;
+  #builder-button {
+    display: none;
   }
 
-  #attributes-window {
-    top: 200px;
-    width: 90%;
-    /* height: 400px; */
-    border-radius: 0;
-    position: absolute;
-  }
-
-  .attributes-wrapper {
-    width: 80%;
-    margin-left: 2rem;
-  }
-
-  #attributes-footer .circle-btn {
-    border-radius: 0;
-  }
-
-  .code-btn {
-    top: 610px;
-    width: 200px;
-    position: absolute;
-  }
-
-  .scroll-text {
-    width: 100%;
-    top: 690px;
-    font-size: 1.4rem;
-    position: absolute;
-  }
-
-  #section-2 h6 {
-    font-size: 1.2rem;
-  }
-
-  #code-container {
-    overflow: scroll;
+  #builder-info {
     padding: 0 2rem;
   }
 
-  .code-box-container {
-    height: 510px;
-    border: 1px solid black;
-    margin: 2rem 0;
+  #builder-info h4 {
+    font-size: 8rem;
+    color: var(--color-grey-dark);
+    margin-bottom: 2rem;
+    transform: rotate(69deg);
   }
 }
