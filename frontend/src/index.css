@@ -694,6 +694,11 @@ textarea:focus {
     position: absolute;
   }
 
+  .attributes-wrapper {
+    width: 80%;
+    margin-left: 2rem;
+  }
+
   #attributes-footer .circle-btn {
     border-radius: 0;
   }
