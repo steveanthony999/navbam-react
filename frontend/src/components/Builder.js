@@ -7,6 +7,7 @@ import { Radio } from 'pretty-checkbox-react';
 import '@djthoms/pretty-checkbox';
 import { Link } from 'react-router-dom';
 import BgImg from '../images/background.png';
+import { useMediaQuery } from 'react-responsive';
 
 const Builder = () => {
   const [radio, setRadio] = useState();
@@ -153,6 +154,10 @@ const Builder = () => {
     }
   };
 
+  const isMobile = useMediaQuery({
+    query: '(max-width: 414px)',
+  });
+
   const style = {
     background: `url(${BgImg}) no-repeat center center/cover`,
     backgroundColor: colors.background,
@@ -215,10 +220,11 @@ const Builder = () => {
             color='info'
             bigger
             onChange={() => handleRadio('viewWidthDesktop')}
-            defaultChecked
+            defaultChecked={isMobile ? false : true}
             data-tip
             data-for='desktop'
             data-delay-show={500}
+            disabled={isMobile ? true : false}
           >
             Desktop
           </Radio>
@@ -235,6 +241,7 @@ const Builder = () => {
             data-tip
             data-for='tablet'
             data-delay-show={500}
+            disabled={isMobile ? true : false}
           >
             Tablet
           </Radio>
@@ -248,6 +255,7 @@ const Builder = () => {
             color='info'
             bigger
             onChange={() => handleRadio('viewWidthMobile')}
+            defaultChecked={isMobile ? true : false}
             data-tip
             data-for='mobile'
             data-delay-show={500}

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 
 const Navbar = ({
   navBg,
@@ -15,8 +16,12 @@ const Navbar = ({
 }) => {
   const [navOpen, setNavOpen] = useState(false);
 
+  const isMobile = useMediaQuery({
+    query: '(max-width: 414px)',
+  });
+
   const navStyle = {
-    width: navbarViewWidth,
+    width: isMobile ? '100%' : navbarViewWidth,
     background: navBg,
     position: navbarPosition,
     left: navbarPosition === 'fixed' ? '50%' : '0',
@@ -73,11 +78,23 @@ const Navbar = ({
   };
 
   const mobileStyle = {
-    display: navbarViewWidth === '480px' ? 'block' : 'none',
+    display: isMobile
+      ? navbarViewWidth === '480px'
+        ? 'none'
+        : 'block'
+      : navbarViewWidth === '480px'
+      ? 'block'
+      : 'none',
   };
 
   const desktopStyle = {
-    display: navbarViewWidth === '480px' ? 'none' : 'block',
+    display: isMobile
+      ? navbarViewWidth === '480px'
+        ? 'block'
+        : 'none'
+      : navbarViewWidth === '480px'
+      ? 'none'
+      : 'block',
   };
 
   const mobileMenuStyle = {
