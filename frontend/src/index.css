@@ -662,6 +662,10 @@ textarea:focus {
   display: none;
 }
 
+#builder-landscape {
+  display: none;
+}
+
 @media screen and (min-width: 415px) and (max-width: 768px) {
   #view-width {
     top: 110px;
@@ -696,5 +700,19 @@ textarea:focus {
     color: var(--color-grey-dark);
     margin-bottom: 2rem;
     transform: rotate(69deg);
+  }
+}
+
+@media screen and (max-width: 896px) and (max-height: 414px) {
+  #home-container {
+    display: none;
+  }
+
+  #builder-button {
+    display: none;
+  }
+
+  #builder-landscape {
+    display: block;
   }
 }

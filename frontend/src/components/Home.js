@@ -18,6 +18,9 @@ const Home = () => {
           <p>Unfortunately this builder is not optimized for mobile. Please visit on a tablet or computer.</p>
         </div>
       </div>
+      <div id='builder-landscape'>
+        <h2>Clever ;)</h2>
+      </div>
     </header>
   );
 };
