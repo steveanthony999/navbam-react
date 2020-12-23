@@ -687,6 +687,7 @@ textarea:focus {
   }
 
   #builder-info {
+    display: block;
     padding: 0 2rem;
   }
 
